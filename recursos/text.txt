@@ -1,0 +1,11 @@
+commit 57e1d2c4596bc4ed95539a619b64ec52ef1c7933
+Author: shalomCanaima <sha23liar@gmail.com>
+Date:   Tue Nov 9 11:16:39 2021 -0430
+
+    jj
+
+commit e8dcca46e1aeb4232982b22ea03a5e4e35b364e9
+Author: shalomCanaima <sha23liar@gmail.com>
+Date:   Tue Nov 9 11:14:50 2021 -0430
+
+    ambiando animacion Selectores

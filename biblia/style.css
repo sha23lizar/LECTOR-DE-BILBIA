@@ -1,0 +1,450 @@
+:root {
+  --blue-prymary: linear-gradient(to bottom right, #1b83d0 30%, #2b4eb8 40%);
+  --white: #fff;
+  --shadow: #6f42c1;
+  --border-size: 5px;
+  --text-selectores: 23px;
+  --text-principal: 26px;
+  --text-biblia: 18px;
+  --content-boder-size: 5px;
+  --content-height: 400px;
+  --content-width: 490px;
+  --content-minimizado-width: 250px;
+  --nav-height: 35px;
+  --content-capitulos-height: calc(100% - var(--nav-height) - var(--border-size) - 2px);
+  --content-capitulos-width: calc(100% - var(--border-size) - var(--border-size));
+  --sobrante: 50vh;
+}
+
+body {
+  min-height: 100vh;
+}
+/**Esto evita que herede estilos de otro lugar*/
+#Lector-biblico{ 
+  all: initial
+}
+
+/*evrytin*/
+#content-biblia * {
+  box-sizing: border-box;
+}
+
+/*Scroll XD*/
+#content-biblia ::-webkit-scrollbar {
+  width: 8px;
+}
+
+#content-biblia ::-webkit-scrollbar-thumb {
+  background: #00aaff;
+}
+
+#content-biblia ::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+#content-biblia {
+  background: var(--blue-prymary);
+  font-family: Calibri;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  z-index: 99999999999;
+  min-width: 400px;
+  min-height: 300px;
+  height: var(--content-height);
+  width: var(--content-width);
+}
+
+#content-biblia.close {
+  display: none
+}
+
+/*nav*/
+#nav-biblia {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding-left: 38px;
+  padding-right: 67px;
+  justify-content: center;
+  color: var(--white);
+  font-size: var(--text-principal);
+  border-top: 1px solid inherit;
+  height: var(--nav-height);
+}
+
+/*Mover*/
+#nav-biblia #mover {
+  width: 100%;
+  height: var(--nav-height);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 2;
+}
+
+#nav-biblia #mover:hover {
+  cursor: move;
+}
+
+#nav-biblia #mover:active {
+  cursor: grabbing;
+}
+
+/*titulo y btn de cambiar*/
+#nav-biblia #buscadores {
+  display: flex;
+}
+
+#nav-biblia div {
+  transition: 0.2s;
+  position: relative;
+  z-index: 4;
+  line-height: var(--nav-height);
+  display: inline-block;
+}
+
+/*libro*/
+#content-biblia:not(.minimizado) #nav-biblia #libro::before {
+  content: attr(data-nombre);
+}
+
+#nav-biblia .titulos {
+  border-radius: 3px;
+  padding: 0px 7px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#nav-biblia .titulos:hover {
+  background-color: white;
+  color: #1b83d0;
+  stroke: #1b83d0;
+}
+
+#nav-biblia .titulos.active {
+  background-color: white;
+  color: #1b83d0;
+}
+
+#nav-biblia .titulos:active {
+  background: transparent;
+  stroke: white;
+}
+
+#nav-biblia .btn-cambiar.disable:active {
+  background: red;
+  stroke: white;
+}
+
+#nav-biblia .content-btn-cambiar {
+  display: flex;
+}
+
+#nav-biblia .btn-cambiar {
+  padding: 0px 0px;
+  width: 24px;
+  height: 35px;
+  stroke: white;
+}
+
+#nav-biblia .btn-cambiar-libro {
+  width: 32px;
+}
+/*redimensionamiento*/
+#content-biblia.ocultarBtnLibro .btn-cambiar-libro{
+  display: none;
+}
+#content-biblia.ocultarBtnCap .btn-cambiar{
+  display: none;
+}
+
+/*logo*/
+#nav-biblia #logo {
+  width: 27px;
+  height: 31px;
+  margin-top: 4px;
+  position: absolute;
+  z-index: 1;
+  left: 10px;
+  top: 0px;
+  font-size: 26px;
+}
+
+/*botones*/
+#nav-biblia #content-botones {
+  position: absolute;
+  z-index: 4;
+  right: 0px;
+  top: 0px;
+  display: flex;
+}
+
+#nav-biblia #content-botones:hover {
+  cursor: pointer;
+}
+
+#nav-biblia #maximizar-minimizar:hover {
+  background: #0c1f80b8;
+}
+
+#nav-biblia #cerrar,
+#nav-biblia #maximizar-minimizar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 33px;
+  height: 35px;
+  text-align: center;
+}
+
+#nav-biblia #cerrar:hover {
+  background-color: red;
+}
+
+#nav-biblia .btn-maximizar {
+  display: none;
+
+}
+
+/* Selectores*/
+#content-biblia .content-selector {
+  position: absolute;
+  top: var(--nav-height);
+  left: var(--border-size);
+  width: var(--content-capitulos-width);
+  margin: 0px;
+  background: var(--blue-prymary);
+  display: flex;
+  flex-wrap: wrap;
+  font-size: var(--text-selectores);
+  overflow-y: scroll;
+  justify-content: space-around;
+  text-align: center;
+  height: 0px;
+  padding: 0px;
+}
+
+#content-biblia .content-selector.active {
+  padding: 3px 2px;
+  height: var(--content-capitulos-height);
+}
+
+#content-biblia .separadores-selectores-libro {
+  color: white;
+  font-size: 30px;
+  margin: 0px;
+  flex: 1 1 100%;
+}
+
+#content-biblia .selector {
+  margin: 3.5px 1.6678%;
+  padding: 4px 4px;
+  font-weight: 550;
+  flex-grow: 1;
+  min-width: 30%;
+  background: var(--white);
+  color: #033ff1;
+  border-radius: 3px;
+  overflow: hidden;
+  cursor: pointer;
+
+}
+
+#content-biblia .selector:hover,
+#content-biblia .selector.active {
+  background: var(--blue-prymary);
+  box-shadow: 0px 0px 0 2px white;
+  color: white;
+  transition: 0.3s;
+  position: relative;
+  transform: scale(1.04);
+}
+
+#content-biblia .selector.active {
+  background: var(--blue-prymary);
+  box-shadow: 0px 0px 0 2px white;
+  color: white;
+  transition: 0.3s;
+  position: relative;
+  transform: scale(1.04);
+}
+
+#content-biblia .selector-ver-cap.active {
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 14px;
+}
+
+#content-biblia .selector-ver-cap .selector {
+  padding: 6px 0;
+  min-width: auto;
+  flex: 1 35px;
+  max-width: 40px;
+}
+
+/* Loader*/
+#loader {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: var(--nav-height);
+  left: var(--border-size);
+  width: var(--content-capitulos-width);
+  margin: 0px;
+  background: var(--blue-prymary);
+  flex-direction: column;
+  height: 0px;
+  color: white;
+  overflow: hidden;
+}
+
+.selector-ver-cap.active:not(.ready)~#loader {
+  height: var(--content-capitulos-height);
+}
+
+
+.loader-svg {
+  margin: 0 0 2em;
+  height: 100px;
+  width: 20%;
+  text-align: center;
+  padding: 1em;
+  margin: 0 auto 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+/*
+  Set the color of the icon
+*/
+#loader svg path,
+#loader svg rect {
+  fill: white;
+}
+
+/* Contenedor del capitulo*/
+#content-capitulos {
+  background-color: rgba(255, 255, 255, 0.95);
+  height: var(--content-capitulos-height);
+  width: var(--content-capitulos-width);
+  margin: 0px auto;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+#content-capitulos .versiculo {
+  margin: 0px;
+  padding: 1px 10px;
+  transition: 1s;
+  text-align: justify;
+  font-size: var(--text-biblia);
+}
+
+#content-capitulos .versiculo.active {
+  background-color: #00aaffb3;
+  transition: 0s;
+}
+
+#content-capitulos .numero-versiculo {
+  margin: 0px 4px;
+  color: #033ff1;
+  font-weight: 900;
+}
+
+/*agrandadores*/
+
+/*general*/
+#content-biblia .extender:active,
+#nav-biblia #mover:active {
+  transition: 0s;
+  left: calc(-1* 100vw);
+  top: calc(-1* 100vh);
+  width: calc(100% + 300vw);
+  height: calc(100% + 300vh);
+}
+
+#agrandar-top {
+  cursor: n-resize;
+  position: absolute;
+  top: 0px;
+  z-index: 3;
+  left: 0px;
+  height: 5px;
+  width: 100%;
+}
+
+#agrandar-bottom {
+  cursor: n-resize;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+
+  width: 100%;
+  height: var(--border-size);
+}
+
+#agrandar-left {
+  cursor: w-resize;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: var(--border-size);
+  height: var(--content-height);
+}
+
+#agrandar-right {
+  cursor: w-resize;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: var(--border-size);
+  height: var(--content-height);
+}
+
+#agrandar {
+  cursor: nw-resize;
+  position: absolute;
+  bottom: -9px;
+  right: -6px;
+  font-size: 30px;
+  z-index: 10;
+}
+
+/*MODO MINIMIZADO*/
+#content-biblia.minimizado>*:not(#nav-biblia),
+#content-biblia.minimizado #nav-biblia .btn-cambiar,
+#content-biblia.minimizado #nav-biblia #maximizar-minimizar .btn-minimizar {
+  display: none;
+}
+
+#content-biblia.minimizado {
+  min-height: var(--nav-height);
+  max-height: var(--nav-height);
+  overflow: visible;
+  min-width: var(--content-minimizado-width);
+  max-width: var(--content-minimizado-width);
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
+
+#content-biblia.minimizado #nav-biblia .titulos:hover,
+#content-biblia.minimizado #nav-biblia #buscadores {
+  background: inherit;
+  color: inherit;
+  z-index: 1;
+}
+
+#content-biblia.minimizado #nav-biblia #libro::before {
+  content: attr(data-acronimo);
+}
+
+#content-biblia.minimizado .btn-minimizar {
+  display: none;
+}
+
+#content-biblia.minimizado .btn-maximizar {
+  display: block;
+}

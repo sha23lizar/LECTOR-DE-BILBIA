@@ -1,0 +1,30 @@
+{
+    "manifest_version":3,
+    "name":"lector Biblico",
+    "version":"1.1",
+    "icons":{
+        "128":"icon128.png",
+        "32":"icon32.png",
+        "16":"icon16.png"
+    },
+    "action":{
+        "default_icon":"icon16.png",
+        "default_popup":"./popup/popup.html"
+    }
+    ,
+    "permissions":[
+        "storage",
+        "notifications",
+        "contextMenus",
+        "tabs"
+    ],
+
+    "background":{
+        "service_worker":"eventPage.js"
+    },
+    "host_permissions":["<all_urls>"],
+    "options_page":"options/optionsPage.html"
+
+
+
+}
